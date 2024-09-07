@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<!-- Start Viewport -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RailMadad, A Grievance Redressal Mechanism</title>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+<link rel="shortcut icon" href="favicons/3371-images-favicon.ico">
+<link type="text/css" href="css/css-bootstrap.min.css" rel="stylesheet">
+<link type="text/css" href="css/css-feedback.css" rel="stylesheet">
+
+<link rel="stylesheet" href="css/css-bootstrap-datetimepicker.min.css">
+<link type="text/css" href="css/css-style_new.css" rel="stylesheet">
+
+<link type="text/css" href="css/css-responsive.css" rel="stylesheet">
+<script type="text/javascript" src="js/3304-js-modernizr.js"></script>
+<script type="text/javascript" src="js/9797-js-jquery-3.7.1.min.js"></script>
+
+  	  	<script src="js/madad-csrfguard.js"></script>
+
+<style>
+</style>
+</head>
+<body>
+
+	<input type="hidden" id="contextval" value="/madad">
+	<input type="hidden" value="null" id="sessionuser">
+	<div class="siteLoading">
+		<div class="trainLoadingWrap">
+			  <img src="images/images-RailMadad.gif" width="100" height="85" alt="RailMadad" title="RailMadad"></div>
+
+	</div>
+
+	<div class="wrapper">
+
+		
+<meta charset="UTF-8">
+<header id="header">
+			<div class="container">
+				<div class="cf">
+					<div id="logo">
+						<a title="RailMadad, A Grievance Redressal Mechanism" class="logo" href="home.html">
+						<img style="height: 70px;
+    width: 170px;" class="p1 pr-3 pt-2" src="images/images-logog20.png" alt="RailMadad, A Grievance Redressal Mechanism">
+						
+							<h1>
+								<font class="RailMadadL">RailMadad</font>
+							</h1>
+							<p>
+								<font class="CaptionL">A Grievance Redressal Mechanism</font>
+							</p> </a>
+					</div>
+					<div class="headerRight">
+						<div class="medicalNumber">
+							<a href="tel:139" class="numberValue"><span class="icon sprite"></span>139</a>
+							<p class="medical">
+								For Security/Medical <br> Assistance
+							</p>
+
+						</div>
+						<ul class="buttonList">
+							
+
+							<li><a href="#" class="headerBtn loginBtn loginClearInput" title="Login" data-toggle="modal" data-target="#loginModal"><font class="LogInL ">Login</font></a></li>
+							<li><a href="#" class="headerBtn signUpBtn loginClearInput" title="Sign Up" data-toggle="modal" data-target="#loginModal"><font class="SignUp">Sign Up</font></a></li>
+							
+							
+							
+
+							<li><select class="languageDropdown" id="langdropdown" onchange="changelangdropdown('')" title="Select Language">
+									<option value="en" selected>English</option>
+									<option value="hi">
+										&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;
+										</option>
+										
+								
+																
+										<option value="bn">
+										&#2476;&#2494;&#2434;&#2482;&#2494;
+										</option>
+										
+										<option value="mr">
+										&#2350;&#2352;&#2366;&#2336;&#2368;
+										</option> 
+										
+										<option value="gu">
+										&#2711;&#2753;&#2716;&#2736;&#2750;&#2724;&#2752;
+										</option> 
+										
+										<option value="kn">
+										&#3221;&#3240;&#3277;&#3240;&#3233;
+										</option> 
+										
+										<option value="ml">										
+										&#3374;&#3378;&#3375;&#3390;&#3379;&#3330;
+										</option> 
+										
+										<option value="pa">
+										&#2602;&#2672;&#2588;&#2622;&#2604;&#2624;
+										</option> 
+										
+										<option value="or">
+										&#2835;&#2849;&#2879;&#2822;
+										</option> 
+										
+										<option value="sa">									
+										&#2360;&#2306;&#2360;&#2381;&#2325;&#2371;&#2340;
+										</option> 
+										
+										<option value="ta">									
+										&#2980;&#2990;&#3007;&#2996;&#3021;
+										</option> 
+										
+										<option value="te">
+										&#3108;&#3142;&#3122;&#3137;&#3095;&#3137;
+										</option> 
+										
+										<option value="ur">
+										&#1575;&#1585;&#1583;&#1608;
+										</option> 
+										
+							</select></li>
+							
+							<li>
+							<div>
+							<img id="image" alt="Login" style="width:50px; height:40px;" src="images/images-google_mic.png" onclick="runSpeechRecog()">
+    										<label id="action" style="color: grey;"></label>										     
+										
+							</div>
+							 
+							
+							</li>
+							
+						</ul>
+					</div>
+				</div>
+			</div>
+
+		</header>
+			<!-- <section class="homeNotification">
+			<div class="container">
+				<div class="marqueeScrollingWrap">
+					<h2 class="Note">Note :</h2>
+					<div class="marqueeScrolling cf">
+						<span class="btnMPause">Pause</span>
+						<ul id="js_Notification" class="marquee cf">
+
+									<li >Contribute your rendering of the National Anthem of India at: https://rashtragaan.in/</li>
+
+					                <li >Contribute your rendering of the National Anthem of India at: https://rashtragaan.in/</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section> -->
+		<script>
+		$(document).ready(function(e) {
+			$('.logoutBtn').click(function() {
+
+		$.ajax({
+			method : 'GET',
+			url : '../FetchData',
+			data : {
+				fetchdatatype:	"logout"		 	
+			},
+			success : function(responseText) {
+				location.reload();
+					
+			},
+			error : function(xhr, status, thrownError) {
+			}
+		});
+			});
+
+			
+			
+	        runSpeechRecog = () => {
+	//alert("Audio is clicked");
+           // document.getElementById("output").innerHTML = "Loading text...";
+           // document.getElementById("complaint_desc").innerHTML = "Prayshi Pandey...";
+
+           // var output = document.getElementById('output');
+            var action = document.getElementById('action');
+            const  SpeechVar = window.webkitSpeechRecognition || window.SpeechRecognition;
+            const recognization = new SpeechVar();
+            recognization.onstart = () => {
+               action.innerHTML = "Listening...";
+            }
+            recognization.onresult = (e) => {
+	               action.innerHTML = "";
+              // var transcript = e.results[0][0].transcript;
+               var audioContent = e.results[0][0].transcript;
+               changelangdropdown(audioContent);
+               //myalert();
+                document.getElementById("complaint_desc").innerHTML = e.results[0][0].transcript;
+              // output.innerHTML = transcript;
+              // output.classList.remove("hide")
+               action.innerHTML = "";
+            }
+            recognization.start();
+         }
+	
+			
+			
+		});
+		</script>
+
+
+
+
+		<main id="main">
+		<div class="homeContent">
+			<div class="container h100">
+				<div class="colWrap h100 cf">
+					<div class="colLeft h100 cf">
+						<!-- <div class="addBanner">
+							<img src="images/protected-from-corona-img.jpg" width="382"
+								style="background-color: white; padding: 8px" height="200"
+								id="covidimg" alt="Stay Protected from Corona"
+								title="Stay Protected from Corona">
+
+						</div> -->
+						<ul class="impLinks">
+							<li><a href="https://www.irctc.co.in/nget/" title="Ticket Booking" target="_blank"><span class="icon"><img src="images/images-booking-icon-1.png" width="61" height="61" alt="Ticket Booking"></span><span class="titleText TicketBooking">Ticket <br> Booking
+								</span></a></li>
+							<li><a href="https://enquiry.indianrail.gov.in/" title="Train Enquiry" target="_blank"><span class="icon"><img src="images/images-booking-icon-2.png" width="61" height="61" alt="Train Enquiry"></span><span class="titleText TrainEnquiry">Train
+										<br> Enquiry
+								</span></a></li>
+							<li><a href="http://www.indianrail.gov.in/" title="Reservation Enquiry" target="_blank"><span class="icon"><img src="images/images-booking-icon-3.png" width="61" height="61" alt="Reservation Enquiry"></span><span class="titleText ReservationEnquiries">Reservation <br>
+										Enquiry
+								</span></a></li>
+							<li><a href="https://rr.irctc.co.in/#/home" title="Retiring Room Booking" target="_blank"><span class="icon"><img src="images/images-booking-icon-4.png" width="61" height="61" alt="Retiring Room Booking"></span><span class="titleText RR">Retiring <br> Room Booking
+								</span></a></li>
+							<li><a href="http://www.indianrailways.gov.in/" title="Indian Railways" target="_blank"><span class="icon"><img src="images/images-booking-icon-5.png" width="61" height="61" alt="Indian Railways"></span><span class="titleText IR">Indian
+										<br> Railways
+								</span></a></li>
+							<li><a href="https://play.google.com/store/apps/details?id=com.cris.utsmobile&amp;hl=en_IN" title="UTS Ticketing" target="_blank"><span class="icon"><img src="images/images-booking-icon-6.png" width="61" height="61" alt="UTS Ticketing"></span><span class="titleText UT">UTS
+										<br> Ticketing
+								</span></a></li>
+							<li><a href="https://www.fois.indianrail.gov.in/RailSAHAY/index.jsp" title="Freight Business" target="_blank"><span class="icon"><img src="images/images-booking-icon-7.png" width="61" height="61" alt="Freight Business"></span><span class="titleText FreightBussiness">Freight
+										<br> Business
+								</span></a></li>
+								
+								<li><a href="https://parcel.indianrail.gov.in/" title="Railway Parcel Website" target="_blank"><span class="icon"><img src="images/images-booking-icon-2.png" width="61" height="61" alt="Railway Parcel Website"></span><span class="titleText ParcelWebsite">Railway
+										<br> Parcel Website
+								</span></a></li>
+						</ul>
+					</div>
+					<div class="colRight h100 cf">
+						<div class="verticalTab resTab cf">
+
+							<ul class="nav nav-tabs nav-justified tabNav" id="myTab">
+
+								<li style="width: 100%"><a id="train" data-toggle="tab" href="#traincomp" role="tab" aria-controls="home" aria-selected="false"><span class="icon icon1 sprite "></span><font class="TrainComplaint">Train
+											<br> Complaints
+									</font></a></li>
+								<li style="width: 100%"><a id="station" data-toggle="tab" href="#stationcomp" role="tab" aria-controls="profile" aria-selected="false"><span class="icon icon2 sprite"></span><font class="StationComplaint">Station <br> Complaints
+									</font></a></li>
+								<li style="width: 100%"><a id="railanubh-tab" data-toggle="tab" href="#railanubh" role="tab" aria-controls="railanubh" aria-selected="false"><span class="icon icon5 sprite "></span><font class="RailAnubhav">Rail
+											<br> Anubhav
+									</font></a></li>
+								<li style="width: 100%"><a id="freightparcel-tab" data-toggle="tab" href="#freightparcel" role="tab" aria-controls="freightparcel" aria-selected="false"><span class="icon icon3 sprite"></span>
+										<font class="FPTab">Freight/Parcel <br> Inquiry
+									</font></a></li>
+								<li style="width: 100%"><a id="track-tab" data-toggle="tab" href="#track" role="tab" aria-controls="contact" aria-selected="false"><span class="icon icon4 sprite"></span><font class="TrackComplaint">TracK
+											your <br> Concern
+									</font></a></li>
+								<li style="width: 100%"><a id="suggestions-tab" data-toggle="tab" href="#suggestions" role="tab" aria-controls="suggestions" aria-selected="false"><span class="icon icon5 sprite"></span><font class="Suggestion">Your
+											Suggestions</font></a></li>
+								<!-- 	<li><a id="suggestions-tab" data-toggle="tab" href="#suggestions" role="tab" aria-controls="suggestions" aria-selected="false"><span class="icon icon5 sprite"></span>Your<br>
+										 Suggestions</a></li> -->
+
+							</ul>
+							<div class="tabContainer" style="min-height: 615px">
+								<div class="tabContent" id="traincomp" role="tabpanel" aria-labelledby="home-tab"></div>
+								<div class="tabContent" id="stationcomp" role="tabpanel" aria-labelledby="profile-tab"></div>
+								<div class="tabContent" id="railanubh" role="tabpanel" aria-labelledby="railanubh-tab"></div>
+								<div class="tabContent" id="freightparcel" role="tabpanel" aria-labelledby="freightparcel-tab"></div>
+								<div class="tabContent" id="track" role="tabpanel" aria-labelledby="contact-tab"></div>
+								<div class="tabContent" id="suggestions" role="tabpanel" aria-labelledby="suggestions-tab"></div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</main>
+
+
+
+
+
+
+				<footer id="footer">
+			<div class="container">
+				<div class="cf">
+					<div class="footerColLeft">
+						<p class="copyright">Copyright &copy;2019 RAILMADAD. All Rights
+							Reserved.</p>
+					</div>
+					<div class="footerColRight">
+						<ul class="footerLinks">
+							<li><a href="home.html"> <font class="Home">Home</font></a></li>
+							<li><a href="#" data-toggle="modal" data-target="#faqModal" class="FAQs">FAQs</a></li>
+							<li><a href="#" title="Railway Admin Login" data-toggle="modal" data-target="#adminModal" class="adminLogin">Railway Admin
+									Login</a></li>
+							<li><a href="home.html" title="MIS Report Login" target="_blank" class="misReportLogin">MIS Report
+									Login</a></li>
+						</ul>
+						
+					</div>
+				</div>
+			</div>
+		</footer>
+
+
+	</div>
+
+
+	<div class="modal" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+		<div class="modal-dialog login-modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-body">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<ul class="defaultTab nav nav-tabs" id="myTab" role="tablist">
+						<li class="nav-item"><a class="nav-link lead active logInTab LogIn" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="false">Log In</a></li>
+						<li class="nav-item"><a class="nav-link lead signUpTab createAccount" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">Sign Up</a></li>
+					</ul>
+					<div class="tab-content" id="myTabContent">
+						<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+							
+
+						</div>
+						<div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+							
+
+  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="keywords" content="Rail Madad, RailMadad, Indian Railways Complaint Management System, COMS Portal,Railway Complaints Portal, Indian Railways Compaints &amp; Suggestion Portal">
+<meta name="description" content="RailMadad- Indian Railways Compaints &amp; Suggestion Portal">
+<meta name="author" content="CRIS">
+<title>RailMadad</title>     
+<script src="js/jstemp-Captcha.js"></script>
+<script type="text/javascript">
+	$(function() {
+
+    $('#login-form-link').click(function(e) {
+		$("#login-form").delay(100).fadeIn(100);
+ 		$("#register-form").fadeOut(100);
+		$('#register-form-link').removeClass('active');
+		$(this).addClass('active');
+		e.preventDefault();
+	});
+	$('#register-form-link').click(function(e) {
+		$("#register-form").delay(100).fadeIn(100);
+ 		$("#login-form").fadeOut(100);
+		$('#login-form-link').removeClass('active');
+		$(this).addClass('active');
+		e.preventDefault();
+	});
+
+});
+</script>
+
+<script type="text/javascript">
+	function check(){
+				 
+	}
+	function isNumberKey(evt)
+    {
+       var charCode = (evt.which) ? evt.which : event.keyCode
+       if (charCode > 31 && (charCode < 48 || charCode > 57))
+          return false;
+
+       return true;
+    }
+	</script>
+         <form id="register-form" name="registerform" method="post" class="commonForm">
+              <div class="row">
+                <div class="col-12">
+                  <div class="formGroup">
+                    <div class="inputField">
+                      <input name="name" id="name" tabindex="1" type="text" placeholder="Name">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="formGroup">
+                    <div class="inputField">
+                      <p class="passwordHint passwordCondition">Please enter alpha numeric with min length 6 only</p>
+                      <input name="password" id="password" pattern="^[A-Za-z0-9 ]*$" tabindex="1" minlength="6" maxlength="10" type="password" placeholder="Password">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="formGroup">
+                    <div class="inputField">
+                      <input name="cpassword" id="cpassword" pattern="^[A-Za-z0-9 ]*$" tabindex="1" minlength="6" maxlength="10" type="password" placeholder="Confirm Password">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="formGroup">
+                    <div class="inputField">
+                      <input name="mobile" id="mobile" tabindex="2" onkeypress="return isNumberKey(event)" maxlength="10" type="text" placeholder="Mobile Number">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12"> <span class="or m-0 orText">OR</span> </div>
+                <div class="col-12">
+                  <div class="formGroup">
+                    <div class="inputField">
+                      <input name="email" id="email" tabindex="1" type="text" placeholder="Email Address">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 col-6">
+                  <div class="formGroup">
+                    <div class="inputField captchaImg"><div id="originalsignupcaptcha" style="text-align: center;"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-2 col-6" style="padding:0px;">
+					<img id="signuprefresh" src="images/img_assets-refresh.png" width="60px" height="30px;">
+				</div>
+				<div class="col-6">
+                  <div class="formGroup">
+                    <div class="inputField">
+                      <input id="signupcaptcha" name="signupcaptcha" required type="text" placeholder="Enter Captcha">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <div class="loginBtnRow">
+                    <button type="submit" name="register-submit" id="register-submit" class="button sendotp">Send OTP</button>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+    			<!-- OTP Input Field -->
+    			<div class="col-md-6 col-12">
+        			<div class="formGroup">
+            			<div class="inputField">
+                		<input name="regotp" id="regotpus" tabindex="2" onkeyup="uotpcheck()" type="text" placeholder="OTP" disabled>
+            			</div>
+        			</div>
+    			</div>
+    			<!-- Register Now Button -->
+    			<div class="col-md-6 col-12">
+        			<div class="formGroup">
+            			<button name="register-otp-submit" id="register-otp-submit" type="submit" class="button mb-3 registernow" disabled>Register Now</button>
+        			</div>
+   				 </div>
+			</div>
+			<div class="row">
+				<div class="col-12" style="text-align:center;">
+				<button type="submit" name="submit" id="resendsubmit" tabindex="4" class="button grayBtn resendotp" disabled>Resend OTP</button>
+				</div>
+			</div>
+            </form>
+	<script src="js/jstemp-signup.js"></script>
+
+
+
+						
+					
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<div class="modal" id="guestModal" tabindex="-1" role="dialog" aria-labelledby="guestLabel" aria-hidden="true">
+		<div class="modal-dialog login-modal-dialog" role="document">
+			<div class="modal-content">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<div class="modalHeader">
+					<h2 class="guestAccount">Guest User</h2>
+				</div>
+				<div class="modal-body">
+					<div id="guestcontent"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<div class="modal" id="loginotpModal" tabindex="-1" role="dialog" aria-labelledby="loginotpModalLabel" aria-hidden="true">
+		<div class="modal-dialog login-modal-dialog" role="document">
+			<div class="modal-content">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<div class="modalHeader">
+					<h2 class="validateotp">Validate OTP</h2>
+				</div>
+				<div class="modal-body">
+					<div id="loginotpcontent" class="text-danger"></div>
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="modal" id="trackotpModal" tabindex="-1" role="dialog" aria-labelledby="trackotpModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<div class="modalHeader">
+					<h2 class="validateotp">Validate OTP</h2>
+				</div>
+				<div class="modal-body">
+
+					<div id="trackotpcontent" class="text-danger"></div>
+
+				</div>
+			</div>
+
+
+
+		</div>
+	</div>
+	<div class="modal" id="guestotpModal" tabindex="-1" role="dialog" aria-labelledby="guestotpModalLabel" aria-hidden="true">
+		<div class="modal-dialog login-modal-dialog" role="document">
+			<div class="modal-content">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<div class="modalHeader">
+					<h2 class="validateotp">Validate OTP</h2>
+				</div>
+				<div class="modal-body">
+					<div id="guestotpcontent"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<div class="modal" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateLabel" aria-hidden="true">
+		<div class="modal-dialog login-modal-dialog" role="document">
+			<div class="modal-content">
+				<button type="button" class="close" id="close-modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<div class="modalHeader">
+					<h2 class="UpdateProfile">Edit Profile</h2>
+				</div>
+				<div class="modal-body">
+					<div id="updatecontent"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal" id="msgModal" tabindex="-1" role="dialog" aria-labelledby="msgLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+
+				<div class="modal-body">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<div class="p-md-5">
+						<h4 class="mb-4">Alert</h4>
+						<div id="msgcontent" class="text-danger"></div>
+					</div>
+
+				</div>
+			</div>
+
+
+
+		</div>
+	</div>
+
+
+
+
+
+
+	<div class="modal" id="forgotModal" tabindex="-1" role="dialog" aria-labelledby="forgotLabel" aria-hidden="true">
+		<div class="modal-dialog login-modal-dialog" role="document">
+			<div class="modal-content">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<div class="modalHeader">
+					<h2 class="forgotPassword">Forgot Password</h2>
+				</div>
+				<div class="modal-body">
+					<div id="forgotcontent"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<div class="modal" id="adminModal" tabindex="-1" role="dialog" aria-labelledby="adminLabel" aria-hidden="true">
+		<div class="modal-dialog login-modal-dialog" role="document">
+			<div class="modal-content">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<div class="modalHeader">
+					<h2 class="adminLogin">Railway Admin Login</h2>
+				</div>
+				<div class="modal-body">
+
+
+
+
+					
+
+
+
+<div class="row">
+
+	<div class="  col-12 customfont3 " style="text-align: center;">
+		<font> <b id="adsigninerror" class="text-danger"> </b>
+		</font>
+	</div>
+
+
+</div>
+
+<div class="row">
+	<div class="col-lg-12">
+
+		<form id="adloginform" class="commonForm">
+		<div class="row">
+				<div class="formGroup col-10 offset-1">
+
+
+					<font> <b id="invalid_credentials_msg" class="text-danger"> </b>
+					</font>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12">
+					<div class="formGroup">
+						<div class="inputField">
+							<input type="text" name="adusername" id="adusername" tabindex="1" required placeholder="User Id" value="">
+						</div>
+					</div>
+				</div>
+				<div class="col-12">
+					<div class="formGroup">
+						<div class="inputField">
+							<input type="password" name="adloginpassword" id="adloginpassword" tabindex="2" placeholder="Password" required>
+						</div>
+					</div>
+				</div>
+				<div class=" col-md-4 col-6">
+					<div class="formGroup">
+						<div class="inputField captchaImg">
+							<div id="adcaptcha" class="captcha" style="text-align: center;"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-2 col-6" style="padding: 0px;">
+					<img id="adrefresh" src="images/img_assets-refresh.png" width="60px" height="30px;">
+				</div>
+				<div class="col-6">
+					<div class="formGroup">
+						<div class="inputField">
+							<input type="text" placeholder="Enter Captcha" name="adlogincaptcha" id="adlogincaptcha" required>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12">
+					<div class="loginBtnRow">
+						<button type="submit" name="ad-login-submit" id="ad-login-submit" tabindex="4" class="button">
+							<font class="signIn">Sign In</font>
+						</button>
+						<span class="or orText">OR</span>
+						<button class="button grayBtn" type="button" id="adforgotbutton">
+
+							<font class="forgotPassword">Forgot Password</font>
+						</button>
+					</div>
+				</div>
+			</div>
+		</form>
+
+
+
+
+
+
+
+
+
+	</div>
+</div>
+
+
+
+<script src="js/jstemp-Captcha.js"></script>
+
+<script src="js/jstemp-adminlogin.js"></script>
+
+
+
+
+
+
+				</div>
+			</div>
+
+
+
+		</div>
+	</div>
+
+	<div class="modal" tabindex="-1" role="dialog" id="otpVerifyModal">
+
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Submit OTP</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form method="post" id="VerifyUserOTP">
+
+
+
+						<div class="row">
+							<p style="color: green; padding-left: 10px;" id="resendotpmsg"></p>
+						</div>
+
+
+						<div class="row ">
+
+							<div class="col-md-4 text-right">
+								<div class="form-group">
+									<label for="first_name">OTP: <span style="color: #f05f40; font-size: 30px"></span></label>
+
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+
+									<input type="text" name="user_verify_otp" value="" class="form-control">
+								</div>
+							</div>
+						</div>
+
+
+						<div class="row ">
+							<div class="col-md-6" style="text-align: right; padding: 2">
+								<div class="form-group">
+									<button id="submitotp" type="submit" name="submitotp" class="btn btn-success submitbtn">Submit</button>
+								</div>
+							</div>
+							<div class="col-md-6" style="text-align: left; padding: 2">
+								<div class="form-group">
+									<button id="resendotp" type="button" name="resendotp" class="btn btn-secondary ">Resend Otp</button>
+								</div>
+							</div>
+						</div>
+
+
+
+
+
+					</form>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+
+	<div class="modal" id="faqModal" tabindex="-1" role="dialog" aria-labelledby="faqLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<div class="modalHeader">
+					<h2 class="faqL">Frequently Ask questions</h2>
+				</div>
+				<div class="modal-body">
+
+					<ul class="defaultTab nav nav-tabs">
+						<li><a data-toggle="tab" href="#menu1" class="active gfaq">General
+								FAQs</a></li>
+						<li><a data-toggle="tab" href="#menu2" class="utsfaq">UTS
+								FAQ</a></li>
+					</ul>
+
+
+					<div class="tab-content">
+
+
+						<div id="menu1" class="tab-pane in active">
+							<div id="generalFAQs" class="faqs">
+
+
+
+								<div id="faqlist"></div>
+
+
+
+
+
+
+
+							</div>
+
+						</div>
+						<div id="menu2" class="tab-pane fade">
+							<div id="UTSFAQs" class="faqs">
+
+
+
+								<div id="faqutslist"></div>
+
+
+
+
+
+
+
+							</div>
+
+						</div>
+					</div>
+
+
+
+
+				</div>
+			</div>
+
+
+
+		</div>
+	</div>
+
+	<div class="modal" id="ratingModal" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+		<div class="modal-dialog rating-modal-dialog" role="document">
+			<div class="modal-content">
+				<button type="button" class="close d-none uxratingclose" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+
+				<div class="modal-body">
+					<div class="row uxRatingResultPanel d-none">
+						<div class="col-12  pb-3  ">
+							<font style="font-size: 20px; color: #930b3e; font-weight: bold;">Thank
+								you for your feedback.</font>
+						</div>
+
+						<div class="col-12  statscontent p-3 pb-5 mt-2" style="background-color: linen; border-radius: 12px"></div>
+						<div class="col-12  p-0 pt-2  text-center text-md-right">
+
+							<button type="button" class=" d-none uxratingclose" data-dismiss="modal" aria-label="Close">Close</button>
+						</div>
+					</div>
+
+					<div class="row uxRatingInputPanel">
+
+						<div class="col-12   pb-4  ">
+							<font style="font-size: 20px; color: #930b3e; font-weight: bold; font-family: arial !important;">Based
+								on your previous experience with this site, kindly rate us.<br>We
+								value your feedback.
+							</font>
+						</div>
+						<div class="col-12 text-center d-flex feedbacksmileypanel">
+
+							<ul class="feedbacksmiley mx-auto pt-1  pb-2" style="zoom: 1.7; padding-left: auto; padding-right: auto;">
+
+								<li class="sad smileyclick">
+									<div>
+										<svg class="eye left">
+                <use xlink:href="#eye">
+            </use></svg>
+										<svg class="eye right">
+                <use xlink:href="#eye">
+            </use></svg>
+										<svg class="mouth">
+                <use xlink:href="#mouth">
+            </use></svg>
+									</div>
+
+								</li>
+								<li class="oksmiley smileyclick">
+									<div></div>
+								</li>
+								<li class="good smileyclick">
+									<div>
+										<svg class="eye left">
+                <use xlink:href="#eye">
+            </use></svg>
+										<svg class="eye right">
+                <use xlink:href="#eye">
+            </use></svg>
+										<svg class="mouth">
+                <use xlink:href="#mouth">
+            </use></svg>
+									</div>
+								</li>
+
+							</ul>
+
+							<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol xmlns="http://www.w3.org/2000/svg" viewbox="0 0 7 4" id="eye">
+        <path d="M1,1 C1.83333333,2.16666667 2.66666667,2.75 3.5,2.75 C4.33333333,2.75 5.16666667,2.16666667 6,1"></path>
+    </symbol>
+    <symbol xmlns="http://www.w3.org/2000/svg" viewbox="0 0 18 7" id="mouth">
+        <path d="M1,5.5 C3.66666667,2.5 6.33333333,1 9,1 C11.6666667,1 14.3333333,2.5 17,5.5"></path>
+    </symbol>
+</svg>
+						</div>
+						<div class="col-12 text-center d-flex  ">
+
+							<ul class=" mx-auto pt-1  pb-2" style="list-style: none; display: flex;">
+
+								<li style="width: 100px; color: #930b3e;">Poor</li>
+								<li style="width: 100px; color: #930b3e;">Average</li>
+								<li style="width: 100px; color: #930b3e;">Good</li>
+
+							</ul>
+						</div>
+						<div class="col-12">
+							<div class="formGroup">
+								<label class="labelText pb-2" style="color: #930b3e;">Remarks
+									(Optional)</label>
+								<div class="inputField">
+									<textarea id="uxReview" name="uxReview" maxlength="200" cols="" rows="" placeholder="Your Feedback..."></textarea>
+								</div>
+							</div>
+						</div>
+						<div class="col-12 text-center pt-4">
+							<input type="button" class="btn" id="uxSubmitBtn" name="uxSubmitBtn" value="Submit">
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('[data-toggle="tooltip"]').tooltip()
+		})
+	</script>
+
+
+
+	<script type="text/javascript">
+		$(document)
+				.ready(
+						function(e) {
+							
+if($("#sessionuser").val()==""||$("#sessionuser").val()=="null"){
+
+	$("#home").load("signin.jsp");
+}
+else{
+	$("#home").html("");
+}
+							//show highlighted rating
+							$('.smileyclick')
+									.on(
+											'click',
+											function(entry) {
+												if (!$(this).hasClass('active')) {
+													if (document
+															.querySelector('.feedbacksmiley li.active') != null) {
+														document
+																.querySelector('.feedbacksmiley li.active').classList
+																.remove('active');
+													}
+													$(this).addClass('active');
+												}
+											});
+							//fetch previous months stats
+							function updateStats() {
+								var stats = 0;
+								getAjax(
+										'../FetchData',
+										{
+											fetchdatatype : 'previousMonthRatingComplainant',
+										})
+										.done(
+												function(
+														previousMonthRatingComplainant) {
+													stats = JSON
+															.parse(previousMonthRatingComplainant);
+												});
+								if (stats.totalCount > 0) {
+									if (document
+											.querySelector('.feedbacksmiley li.active') != null) {
+										document
+												.querySelector('.feedbacksmiley li.active').classList
+												.remove('active');
+									}
+
+									var ratingLabel = "";
+									var ratingColor = "";
+									if (stats.averageRating > 2) {
+										document
+												.querySelector('.feedbacksmiley .good').classList
+												.add('active');
+										ratingLabel = "Good";
+										ratingColor = "green";
+									}
+									if (stats.averageRating > 1
+											&& stats.averageRating <= 2) {
+										document
+												.querySelector('.feedbacksmiley .oksmiley').classList
+												.add('active');
+										ratingLabel = "Average";
+										ratingColor = "#ffc107";
+
+									}
+									if (stats.averageRating <= 1) {
+										document
+												.querySelector('.feedbacksmiley .sad').classList
+												.add('active');
+										ratingLabel = "Poor";
+										ratingColor = "red";
+
+									}
+
+									var statscontent = "";
+									statscontent += "<div class='row'><div class='col-12' style='font-weight: 600;'>Previous Month's Average Rating: <font style='color:"+ratingColor+";'><b >"
+											+ ratingLabel
+											+ "<hr class='mt-2 mb-3'>";
+									statscontent += "<div class='row'><div class='col-12 col-md-6'><div class='row'><div class='col-12  text-center'><font style='font-size:33px;font-weight:bold;'>"
+											+ stats.averageRating
+											+ "/3"
+											+ "";
+
+									statscontent += "<div class='row pt-1 p-1'><div class='col-12  text-center d-flex'><ul class='feedbacksmiley mx-auto pt-1  pb-2' style='padding-left:auto;padding-right:auto;zoom:1.4'>"
+											+ $(".feedbacksmiley").html()
+											+ "";
+									if (stats.totalCount == 1) {
+										statscontent += "<div class='row pt-2'><div class='col-12  text-center pt-1' style='font-size: 20px;'><b>"
+												+ stats.totalCount
+												+ " rating";
+
+									} else {
+										statscontent += "<div class='row pt-2'><div class='col-12  text-center pt-1' style='font-size: 20px;'><b>"
+												+ stats.totalCount
+												+ " ratings";
+									}
+
+									statscontent += "<div class='col-12 col-md-6'><div class='row '><div class='col-12 pb-2  text-center'>Rating Count<div class='col-12  text-center'><b class='d-flex'>Poor ("
+											+ stats.poorCount
+											+ ")<div class='progress d-flex mt-1' style='background-color: #ffffff;'><div class='progress-bar bg-danger' role='progressbar'  "
+											+ " style='width: "
+											+ (stats.poorCount / stats.totalCount)
+											* 100
+											+ "%;' aria-valuenow='"
+											+ stats.poorCount
+											+ "' aria-valuemin='0' aria-valuemax='"
+											+ stats.totalCount
+											+ "'>";
+									statscontent += "<div class='col-12  text-center pt-2' ><b class='d-flex'>Average ("
+											+ stats.averageCount
+											+ ")<div class='progress d-flex mt-1' style='background-color: #ffffff;'><div class='progress-bar bg-warning' role='progressbar'  "
+											+ " style='width: "
+											+ (stats.averageCount / stats.totalCount)
+											* 100
+											+ "%;' aria-valuenow='"
+											+ stats.averageCount
+											+ "' aria-valuemin='0' aria-valuemax='"
+											+ stats.totalCount
+											+ "'>";
+									statscontent += "<div class='col-12  text-center pt-2'><b class='d-flex'>Good ("
+											+ stats.goodCount
+											+ ")<div class='progress d-flex mt-1' style='background-color: #ffffff;'><div class='progress-bar bg-success' role='progressbar'  "
+											+ " style='width: "
+											+ (stats.goodCount / stats.totalCount)
+											* 100
+											+ "%;' aria-valuenow='"
+											+ stats.goodCount
+											+ "' aria-valuemin='0' aria-valuemax='"
+											+ stats.totalCount
+											+ "'>";
+
+									$(".statscontent").html(statscontent);
+								} else {
+									$(".statscontent").addClass("d-none");
+
+								}
+							}
+							//submit rating
+							$("#uxSubmitBtn")
+									.on(
+											'click',
+											function() {
+												if (document
+														.querySelector('.feedbacksmiley li.active') == null) {
+													alert("Please rate your experience.");
+												} else {
+													var rating = "";
+													var ratingValue = "";
+													switch (document
+															.querySelector('.feedbacksmiley li.active').classList[0]) {
+													case "sad":
+														rating = "Poor";
+														ratingValue = 1;
+														break;
+													case "oksmiley":
+														rating = "Average";
+														ratingValue = 2;
+														break;
+													case "good":
+														rating = "Good";
+														ratingValue = 3;
+														break;
+
+													}
+
+													$
+															.ajax({
+																method : 'POST',
+																url : '../InsertModuleData',
+																data : {
+																	moduletype : "insertUxRating",
+																	rating : rating,
+																	ratingValue : ratingValue,
+																	review : $(
+																			"#uxReview")
+																			.val()
+																},
+																success : function(
+																		responseText) {
+																	$(
+																			".uxRatingInputPanel")
+																			.addClass(
+																					"d-none");
+																	$(
+																			".uxRatingResultPanel")
+																			.removeClass(
+																					"d-none");
+																	$(
+																			".uxratingclose")
+																			.removeClass(
+																					"d-none");
+
+																	updateStats();
+
+																},
+																error : function(
+																		xhr,
+																		status,
+																		thrownError) {
+																}
+															});
+												}
+											});
+
+							//utility function
+							function getAjax(url, data) {
+								return $.ajax({
+									type : 'GET',
+									url : url,
+									data : data,
+									async : false,
+									success : function(response) {
+									}
+								});
+							}
+
+							//condition to show rating modal
+							var fetchEnableUxRatingFlag = 0;
+							getAjax('../FetchData', {
+								fetchdatatype : 'fetchEnableUxRatingFlag',
+							}).done(function(response) {
+								fetchEnableUxRatingFlag = response;
+							});
+							if (fetchEnableUxRatingFlag == 1) {
+								var repeatUser = ""
+								getAjax('../FetchData', {
+									fetchdatatype : 'checkForRepeatUser',
+								}).done(function(response) {
+									repeatUser = response.trim();
+								});
+								if (repeatUser == "true") {
+									var uxRating = "";
+									getAjax(
+											'../FetchData',
+											{
+												fetchdatatype : 'fetchUxRatingCurrentMonth',
+											}).done(function(response) {
+										uxRating = response.trim();
+									});
+									if (uxRating != "") {
+										uxRating = JSON.parse(uxRating);
+										if (!uxRating.dataFetched) {
+											$("#ratingModal").modal('show');
+										}
+									}
+
+								}
+							}
+
+							$("#faqlist").on(
+									'click',
+									'.accordion .accTrigger',
+									function() {
+
+										if ($(this).hasClass("active")) {
+											$(this).removeClass('active');
+											console.log($(this).next().filter(
+													'.accordDetail')
+													.removeClass('d-block'));
+										} else {
+
+											$(this).addClass('active');
+											console.log($(this).next().filter(
+													'.accordDetail').addClass(
+													'd-block'));
+										}
+									});
+							$("#faqutslist").on(
+									'click',
+									'.accordion .accTrigger',
+									function() {
+										if ($(this).hasClass("active")) {
+											$(this).removeClass('active');
+											console.log($(this).next().filter(
+													'.accordDetail')
+													.removeClass('d-block'));
+										} else {
+
+											$(this).addClass('active');
+											console.log($(this).next().filter(
+													'.accordDetail').addClass(
+													'd-block'));
+										}
+									});
+							$.ajax({
+								url : '../FetchData',
+								type : 'GET',
+								data : {
+									fetchdatatype : 'resettrainsession'
+								},
+
+								success : function(response) {
+
+								},
+								error : function(xhr, status, thrownError) {
+									alert("internal error");
+								}
+							});
+							$.ajax({
+								method : 'GET',
+								url : '../FetchData',
+								data : {
+									fetchdatatype : "generatecaptcha"
+								},
+								success : function(responseText) {
+									$("#captcha").empty();
+
+									$(".captcha").empty();
+
+									$("#captcha").append(responseText);
+									$(".captcha").append(responseText);
+								},
+								error : function(xhr, status, thrownError) {
+								}
+							});
+							$.ajax({
+								method : 'GET',
+								url : '../FetchData',
+								data : {
+									fetchdatatype : "generatesignupcaptcha"
+								},
+								success : function(responseText) {
+									console.log("-------------responseText generatesignupcaptcha--------------------"+responseText);
+									$("#originalsignupcaptcha").empty();
+									$("#originalsignupcaptcha").append(responseText);
+								},
+								error : function(xhr, status, thrownError) {
+								}
+							});
+							$
+							.ajax({
+								method : 'GET',
+								url : '../FetchData',
+								data : {
+									fetchdatatype : "generategusercaptcha"
+								},
+								success : function(responseText) {
+									console
+											.log("-------------responseText originalgusercaptcha--------------------"
+													+ responseText);
+									$("#originalgusercaptcha").empty();
+									$("#originalgusercaptcha").append(
+											responseText);
+								},
+								error : function(xhr, status, thrownError) {
+								}
+							});
+							$.ajax({
+								method : 'GET',
+								url : '../FetchData',
+								data : {
+									fetchdatatype : "generatefpswdcaptcha"
+								},
+								success : function(responseText) {
+									console.log("-------------responseText generateforgotpasswordcaptcha--------------------"+responseText);
+									$("#originalfpasswrdcaptcha").empty();
+									$("#originalfpasswrdcaptcha").append(responseText);
+								},
+								error : function(xhr, status, thrownError) {
+								}
+							});
+							$('#otpsubmit').click(function() {
+								$('#otp').show();
+
+							})
+
+							/* $('#openguestmodal').click(function() {
+								$('#guestcontent').load("guestLogin.jsp");
+								$("#guestModal").modal('show');
+								$("#loginModal").modal('hide');
+
+							}) */
+
+							$('#updateopen').click(function() {
+								$('#updatecontent').load("ChangePassword.jsp");
+								setlang('na');
+
+								$("#updateModal").modal('show');
+
+							})
+
+							$('#close-modal').on('click', function () {
+								
+								$('#updatecontent').html("");
+                                     $('#updateModal').modal('hide');
+})
+
+$.ajax({
+	method : 'GET',
+	url : '../FetchData',
+	data : {
+		fetchdatatype : "fetchhitcount"
+	},
+	success : function(responseText) {
+//alert(responseText);
+  console.log("hit counts are"+responseText);
+		//$(".hitcount").html(responseText);
+	},
+	error : function(xhr, status, thrownError) {
+	}
+});
+
+						})
+	</script>
+
+	<script type="text/javascript" src="js/8625-js-popper.min.js"></script>
+	<script type="text/javascript" src="js/8303-js-bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/3487-js-moment.min.js"></script>
+	<script type="text/javascript" src="js/9054-js-bootstrap-datetimepicker.min.js"></script>
+	<script type="text/javascript" src="js/6318-js-functions.js"></script>
+	<script type="text/javascript" src="js/8991-js-general.js"></script>
+
+
+
+	<script src="js/5601-js-my-app.js"></script>
+
+	<script src="js/js_assets-moment-with-locales.js"></script>
+
+
+
+	<link href="css/css_assets-jquery.flexdatalist.min.css" rel="stylesheet" type="text/css">
+
+
+	<script src="js/js_assets-jquery.flexdatalist.min.js"></script>
+
+
+
+
+
+
+	<script src="js/MultiLang-multilang.js"></script>
+	<script src="js/5382-jstemp-home.js"></script>
+
+	<script>
+		(function() {
+					var s = document.createElement("script");
+					s.setAttribute("data-account", "DPwynMwSUY");
+					s.setAttribute("src", "https://cdn.userway.org/widget.js");
+					document.body.appendChild(s);
+				})();
+	</script>
+	<noscript>
+		Enable JavaScript to ensure <a href="https://userway.org">website
+			accessibility</a>
+	</noscript>
+
+	<input class="d-none" type="text" id="trackhidden">
+
+</body>
+</html>
